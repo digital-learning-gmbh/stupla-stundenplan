@@ -1,0 +1,37 @@
+{
+  "name": "stupla-stundenplan-example",
+  "homepage": ".",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently --kill-others \"node ../node_modules/react-scripts/bin/react-scripts.js start\" \"npx ws -p 8000 --stack ws/mock.js lws-cors --cors.origin '*'\"",
+    "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
+    "test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
+    "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "local-web-server": "^5.0.0",
+    "lws-cors": "^3.0.0",
+    "react": "file:../node_modules/react",
+    "react-dom": "file:../node_modules/react-dom",
+    "react-scripts": "file:../node_modules/react-scripts",
+    "stupla-stundenplan": "file:.."
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
+    "concurrently": "^6.2.0",
+    "koa-route": "^3.2.0",
+    "lws": "^4.0.2",
+    "lws-body-parser": "^2.0.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
