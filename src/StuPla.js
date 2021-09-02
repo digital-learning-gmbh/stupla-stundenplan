@@ -220,8 +220,6 @@ const StuPla = ({
       apiToken,
       entityType,
       entityId,
-      false,
-     //storeViewContext.draftId,
       calendarTimeFrame.start,
       calendarTimeFrame.end
     )
