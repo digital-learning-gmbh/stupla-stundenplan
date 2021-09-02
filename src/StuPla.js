@@ -38,12 +38,12 @@ const concatParams = (params = {}) => {
 
 const getTimetableTimeFrame = (basePath, token, entityType, entityId) =>
 {
-  return _get(basePath+concatParams({entity_id : entityId, entity_type : entityType}), token)
+  return _get(basePath+concatParams({foreign_id : entityId, type : entityType}), token)
 }
 
 const getTimetable = (basePath, token, entityType, entityId, startUnix, endUnix) =>
 {
-    return _get(basePath+ concatParams({entity_id : entityId, entity_type : entityType, start : startUnix, end : endUnix}), token)
+    return _get(basePath+ concatParams({foreign_id : entityId, type : entityType, startUnix : startUnix, endUnix : endUnix}), token)
 }
 const _get = (path, token) =>
 {
@@ -516,8 +516,8 @@ StuPla.defaultProps = {
   noEntityLoadedComponent: 'Die Termine konnten nicht geladen werden.',
   errorCallback : (msg) => {console.error(msg)}, // channel to err
 
-  pathTimeFrame : "administration/timetable/timeframe",
-  pathTeaching : "administration/timetable/teaching"
+  pathTimeFrame : "rios/timetable/timeframe",
+  pathTeaching : "rios/timetable"
 };
 
 export default StuPla
