@@ -110,7 +110,7 @@ const StuPla = ({
     }
 
     //remove trailing slash
-   return baseUrl.lastIndexOf("/") == baseUrl.length ? baseUrl.substr(0, baseUrl.length - 1) : baseUrl
+   return baseUrl.lastIndexOf("/") === baseUrl.length - 1 ? baseUrl.substr(0, baseUrl.length - 1) : baseUrl
   }
 
 
