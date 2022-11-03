@@ -475,7 +475,7 @@ const LessonContent = (props) => {
           }}
         >
           <i className='fa fa-users mr-1' />
-          {evt?.extendedProps?.klassen_name.join(', ')}
+          {evt?.extendedProps?.klassen_name?.join(', ')}
         </i>
       ) : null}
     </div>
