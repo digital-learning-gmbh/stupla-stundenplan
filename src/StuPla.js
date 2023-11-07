@@ -245,6 +245,10 @@ const StuPla = ({
   const eventRender = (arg, element, view) => {
     if (arg.event.display === 'background')
       return <BreakContent event={arg.event} />
+      
+    if(arg.event.extendedProps.type === "rios_leistungscache")
+      return <RiosLeistungsDoku event={arg.event} />
+      
     return (
       <LessonContent
         section={currentSection}
@@ -415,6 +419,36 @@ const StuPla = ({
         }
     </div>
   )
+}
+
+
+const RiosLeistungsDoku = (props) => {
+
+  let evt = props.event?._def
+  let range = props.event?._instance?.range
+  if(!evt || !range)
+      return "Ein Fehler ist aufgetreten"
+
+  let eventId = props.event.id
+
+  //console.log(evt);
+  var background = "repeating-linear-gradient( 45deg, " + evt?.ui.backgroundColor + ",  " +  evt?.ui.backgroundColor + " 10px,  rgba(157, 154, 154, 0.5) 10px, rgba(157, 154, 154, 0.5) 20px)";
+
+  // console.log(background);
+  //console.log(evt)
+  let content = <div
+      style={{display :"flex", flexDirection :"column", height : "100%", color: evt?.extendedProps.eventTextColor, background: background }}>
+      <h6 style={{marginBottom : "0px"}}><b>{evt.title}</b>
+          <div style={{ fontSize: "0.8em", float: "right"}}>{moment(range.start).utc().format("HH:mm")} - {moment(range.end).utc().format("HH:mm")}</div>
+      </h6>
+      <i>{evt?.extendedProps?.subtitle}</i>
+      {evt?.extendedProps?.dozent?.length > 0? <i style={{ fontSize: "0.75em", textOverflow: "ellipsis", whiteSpace: "nowrap", overflow: "hidden"}}><i className={"fa fa-user-tie mr-1"}/>{evt?.extendedProps?.dozent}</i> : null}
+      {evt?.extendedProps?.raum?.length > 0?<i style={{ fontSize: "0.75em", textOverflow: "ellipsis", whiteSpace: "nowrap", overflow: "hidden"}}><i className={"fa fa-home mr-1"}/>{evt?.extendedProps?.raum}</i>: null}
+      {evt?.extendedProps?.klassen_name?.length > 0?<i style={{ fontSize: "0.75em", textOverflow: "ellipsis", whiteSpace: "nowrap", overflow: "hidden"}}><i className={"fa fa-users mr-1"}/>{evt?.extendedProps?.klassen_name?.join(", ")}</i>: null}
+  </div>
+
+  return content
+
 }
 
 const LessonContent = (props) => {

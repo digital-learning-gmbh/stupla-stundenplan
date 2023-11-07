@@ -1,6 +1,6 @@
 {
   "name": "stupla-stundenplan",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React component to view the timetable from stupla",
   "author": "movcmpret",
   "license": "MIT",
